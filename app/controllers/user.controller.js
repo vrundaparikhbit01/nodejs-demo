@@ -128,7 +128,24 @@ exports.oneToOne = async (req, res) => {
 		return res.status(500).send({
 	        message: err.message,
 	    });
-	})
+	});
+
+	// Raw Query
+	/*const [results, metadata] = await db.sequelize.query(
+  		"SELECT a.*, u.* from users as u LEFT JOIN accounts as a ON u.id = a.user_id WHERE u.email='"+req.body.email+"' LIMIT 1"
+	)
+	.catch((err) => {
+		return res.status(500).send({
+	        message: err.message,
+	    });
+	});
+
+	return res.status(200).send({
+        message: "success!",
+        data:results
+        // data:data.get().invoices
+    });*/
+
 
 	/*Account.findOne({
 		include: ['user'], 
